@@ -1,22 +1,52 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
 
 function App() {
+
+    // const lists = ["A", "B", "C", "D"];
+    const [lists, setLists] = useState(["A", "B", "C", "D"]);
+
+    const handleClick = (list) => {
+      console.log(list);
+      console.log(lists);
+  
+      // if (list !== lists[0]){
+      //   const newLists = lists.filter(listNum => listNum !== list )
+  
+      //   console.log(newLists)
+  
+      //   newLists.unshift(list);
+      //   setLists(newLists)
+      //   console.log(newLists)
+  
+      //   // lists.pop();
+      // } 
+  
+      const newLists = lists.filter(listNum => listNum != list )
+  
+      console.log(newLists)
+  
+      newLists.unshift(list);
+      setLists(newLists)
+      console.log(newLists)
+  
+      // setLists(lists)
+      console.log(lists)
+    }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+      Hello World!!!
+
+      <ul>
+        { lists && lists.map( (list, index) => {
+          return <li onClick={()=> handleClick(list) } key={index} > {list} </li>
+        } )  }
+      </ul>
+      
       </header>
     </div>
   );
